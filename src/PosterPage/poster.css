@@ -1,83 +1,118 @@
-/* Existing styles (your original code)... */
-/* Keep your existing styles here */
+.poster {
+  width: 768px;
+  height: 960px;
+  margin: auto;
+  background-size: cover;
+  position: relative;
+  font-family: 'Dancing Script', cursive;
+  border: 2px solid #ccc;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
 
-@media (max-width: 768px) {
-  .poster {
-    width: 90%;
-    height: auto;
-    padding-bottom: 20px;
-    font-size: 16px;
-  }
+.green-heading {
+  position: absolute;
+  top: 178px;
+  left: 210px;
+  /* transform: translateX(-50%); */
+  width: 350px;
+  height: 45px;
+  font-size: 25px;
+  font-weight: bold;
+  text-align: center;
+  background: transparent;
+  color: black;
+  border: none;
+  outline: none;
+  padding-top: 13px;
+}
 
-  .green-heading {
-    width: 80%;
-    left: 50%;
-    top: 150px;
-    font-size: 20px;
-    transform: translateX(-50%);
-    padding-top: 10px;
-  }
+.upload-box {
+  position: absolute;
+  width: 145px;
+  height: 159px;
+  overflow: hidden;
+}
 
-  .upload-box {
-    width: 100px;
-    height: 110px;
-  }
+.upload-box input[type='file'] {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  position: absolute;
+}
 
-  .president,
-  .secretary,
-  .treasurer,
-  .chairperson,
-  .generalconvener,
-  .secondtreasurer {
-    width: 100px;
-    height: 110px;
-  }
+.upload-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  .president {
-    top: 300px;
-    left: 15%;
-  }
-  .secretary {
-    top: 300px;
-    left: 40%;
-  }
-  .treasurer {
-    top: 300px;
-    left: 65%;
-  }
-  .chairperson {
-    top: 500px;
-    left: 15%;
-  }
-  .generalconvener {
-    top: 500px;
-    left: 40%;
-  }
-  .secondtreasurer {
-    top: 500px;
-    left: 65%;
-  }
+/* Box positions */
+.president {
+  top: 356px;
+  left: 165px;
+}
+.secretary {
+  top: 356px;
+  left: 313px;
+}
+.treasurer {
+  top: 356px;
+  left: 460px;
+}
+.chairperson {
+  top: 634px;
+  left: 165px;
+}
+.generalconvener {
+  top: 634px;
+  left: 313px;
+}
+.secondtreasurer {
+  top: 634px;
+  left: 460px;
+}
 
-  .textnames,
-  .textnames2 {
-    flex-wrap: wrap;
-    gap: 10px;
-    width: 100%;
-    left: 0;
-    padding: 0 10px;
-  }
+.textnames,
+.textnames2 {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  position: absolute;
+}
 
-  .textnames {
-    top: 430px;
-  }
+.textnames {
+  top: 540px;
+  left: 169px;
+}
 
-  .textnames2 {
-    top: 630px;
-  }
+.textnames2 {
+  top: 820px;
+  left: 165px;
+}
 
-  .textnames textarea,
-  .textnames2 textarea {
-    width: 100px;
-    font-size: 14px;
+.textnames textarea,
+.textnames2 textarea {
+  width: 130px;
+  min-height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+  font-family: 'Noto Sans', sans-serif;
+  resize: none;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  /* padding: 4px; */
+  line-height: 1.2;
+}
+
+/* Hide inputs and button when printing */
+@media print {
+  input,
+  textarea,
+  button {
+    display: none;
   }
 }
