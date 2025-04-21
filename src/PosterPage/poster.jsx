@@ -20,16 +20,33 @@ const PosterEditor = () => {
     }
   };
 
+  // 📥 PDF Download Handler (Supports Mobile)
   const handleDownloadPDF = async () => {
-    const canvas = await html2canvas(posterRef.current);
-    const imgData = canvas.toDataURL('image/png');
+    const canvas = await html2canvas(posterRef.current, {
+      useCORS: true,
+      scale: 2,
+    });
+    const imgData = canvas.toDataURL('image/jpeg', 1.0);
+
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'px',
       format: [canvas.width, canvas.height],
     });
-    pdf.addImage(imgData, 'PNG', 0, 0, canvas.width, canvas.height);
+    pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
     pdf.save('poster.pdf');
+  };
+
+  // 🖼️ Save as Image Handler
+  const handleSaveAsImage = async () => {
+    const canvas = await html2canvas(posterRef.current, {
+      useCORS: true,
+      scale: 2,
+    });
+    const link = document.createElement('a');
+    link.download = 'poster-image.png';
+    link.href = canvas.toDataURL('image/png');
+    link.click();
   };
 
   const roles = [
@@ -63,7 +80,6 @@ const PosterEditor = () => {
           </div>
         ))}
 
-        {/* Name input sections */}
         <div className="textnames">
           <textarea placeholder="President Name" />
           <textarea placeholder="Secretary Name" />
@@ -77,9 +93,25 @@ const PosterEditor = () => {
         </div>
       </div>
 
-      <Button onClick={handleDownloadPDF} className="download-btn">
-        Download as PDF
-      </Button>
+      <div
+        style={{
+          marginTop: '20px',
+          display: 'flex',
+          gap: '10px',
+          justifyContent: 'center',
+        }}
+      >
+        <Button onClick={handleDownloadPDF} className="download-btn">
+          Download PDF
+        </Button>
+        <Button
+          onClick={handleSaveAsImage}
+          className="download-btn"
+          type="primary"
+        >
+          Save as Image
+        </Button>
+      </div>
     </>
   );
 };
