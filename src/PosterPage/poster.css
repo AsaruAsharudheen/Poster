@@ -1,35 +1,40 @@
 .poster {
-  width: 768px;
-  height: 960px;
+  max-width: 100%;
+  width: 90vw;
+  height: auto;
+  aspect-ratio: 4 / 5;
   margin: auto;
   background-size: cover;
+  background-position: center;
   position: relative;
   font-family: 'Dancing Script', cursive;
   border: 2px solid #ccc;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+/* Heading */
 .green-heading {
   position: absolute;
-  top: 178px;
-  left:210px;
-  /* transform: translateX(-50%); */
-  width: 350px;
-  height: 45px;
-  font-size: 25px;
+  top: 18.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45%;
+  height: auto;
+  font-size: 4vw;
   font-weight: bold;
   text-align: center;
   background: transparent;
   color: black;
   border: none;
   outline: none;
-  padding-top: 13px;
+  padding-top: 1vh;
 }
 
+/* Upload Boxes */
 .upload-box {
   position: absolute;
-  width: 145px;
-  height: 159px;
+  width: 18%;
+  aspect-ratio: 1/1.1;
   overflow: hidden;
 }
 
@@ -47,65 +52,66 @@
   object-fit: cover;
 }
 
-/* Box positions */
+/* Box Positions (relative % instead of fixed px) */
 .president {
-  top: 356px;
-  left: 165px;
+  top: 37%;
+  left: 21%;
 }
 .secretary {
-  top: 356px;
-  left: 313px;
+  top: 37%;
+  left: 40%;
 }
 .treasurer {
-  top: 356px;
-  left: 460px;
+  top: 37%;
+  left: 59%;
 }
 .chairperson {
-  top: 634px;
-  left: 165px;
+  top: 66%;
+  left: 21%;
 }
 .generalconvener {
-  top: 634px;
-  left: 313px;
+  top: 66%;
+  left: 40%;
 }
 .secondtreasurer {
-  top: 634px;
-  left: 460px;
+  top: 66%;
+  left: 59%;
 }
 
+/* Text name boxes */
 .textnames,
 .textnames2 {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 3vw;
   position: absolute;
+  width: 70%;
 }
 
 .textnames {
-  top: 540px;
-  left: 169px;
+  top: 56%;
+  left: 15%;
 }
 
 .textnames2 {
-  top: 820px;
-  left: 165px;
+  top: 84%;
+  left: 15%;
 }
 
 .textnames textarea,
 .textnames2 textarea {
-  width: 130px;
+  width: 18vw;
   min-height: 40px;
-  font-size: 18px;
+  font-size: 3.5vw;
   font-weight: bold;
   border: none;
   background-color: transparent;
   text-align: center;
   font-family: 'Noto Sans', sans-serif;
   resize: none;
+  line-height: 1.2;
   overflow-wrap: break-word;
   word-break: break-word;
-  /* padding: 4px; */
-  line-height: 1.2;
 }
 
 /* Hide inputs and button when printing */
@@ -117,4 +123,20 @@
   }
 }
 
+/* Mobile-specific tweaks */
+@media (max-width: 480px) {
+  .green-heading {
+    font-size: 6vw;
+    width: 70%;
+  }
 
+  .textnames textarea,
+  .textnames2 textarea {
+    font-size: 4vw;
+    width: 25vw;
+  }
+
+  .upload-box {
+    width: 22%;
+  }
+}
