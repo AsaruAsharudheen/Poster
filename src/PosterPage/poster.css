@@ -13,11 +13,10 @@
   position: absolute;
   top: 178px;
   left: 210px;
-  /* transform: translateX(-50%); */
   width: 350px;
   height: 45px;
   font-size: 25px;
-  font-weight: bold;
+  font-weight: 600; /* Replace with desired weight */
   text-align: center;
   background: transparent;
   color: white;
@@ -25,6 +24,9 @@
   outline: none;
   padding-top: 13px;
   font-family: 'Anek Malayalam', sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-variation-settings: 'wdth' 100;
 }
 
 .upload-box {
