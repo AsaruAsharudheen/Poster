@@ -58,6 +58,10 @@ const PosterEditor = () => {
     'SecondTreasurer',
   ];
 
+  const handleTextChange = (role, event) => {
+    setImages(prev => ({ ...prev, [role]: event.target.innerText }));
+  };
+
   return (
     <>
       <div
@@ -65,13 +69,14 @@ const PosterEditor = () => {
         ref={posterRef}
         style={{ backgroundImage: `url("/MSF Nellaya Copy 1 copy.png")` }}
       >
-        <input
-          type="text"
+        {/* Green Heading as a p tag */}
+        <p
           className="green-heading"
-          value={greenHeading}
-          onChange={e => setGreenHeading(e.target.value)}
-          placeholder="തലക്കെട്ട് മലയാളത്തിൽ ടൈപ്പ് ചെയ്യൂ"
-        />
+          contentEditable
+          onInput={e => setGreenHeading(e.target.innerText)}
+        >
+          {greenHeading || ''}
+        </p>
 
         {roles.map(role => (
           <div key={role} className={`upload-box ${role.toLowerCase()}`}>
@@ -81,15 +86,51 @@ const PosterEditor = () => {
         ))}
 
         <div className="textnames">
-          <textarea placeholder="President Name" />
-          <textarea placeholder="Secretary Name" />
-          <textarea placeholder="Treasurer Name" />
+          <p
+            contentEditable
+            placeholder="President Name"
+            onInput={e => handleTextChange('President', e)}
+          >
+            President Name
+          </p>
+          <p
+            contentEditable
+            placeholder="Secretary Name"
+            onInput={e => handleTextChange('Secretary', e)}
+          >
+            Secretary Name
+          </p>
+          <p
+            contentEditable
+            placeholder="Treasurer Name"
+            onInput={e => handleTextChange('Treasurer', e)}
+          >
+            Treasurer Name
+          </p>
         </div>
 
         <div className="textnames2">
-          <textarea placeholder="Chairperson Name" />
-          <textarea placeholder="General Convener Name" />
-          <textarea placeholder="Second Treasurer Name" />
+          <p
+            contentEditable
+            placeholder="Chairperson Name"
+            onInput={e => handleTextChange('Chairperson', e)}
+          >
+            Chairperson Name
+          </p>
+          <p
+            contentEditable
+            placeholder="General Convener Name"
+            onInput={e => handleTextChange('GeneralConvener', e)}
+          >
+            General Convener Name
+          </p>
+          <p
+            contentEditable
+            placeholder="Second Treasurer Name"
+            onInput={e => handleTextChange('SecondTreasurer', e)}
+          >
+            Second Treasurer Name
+          </p>
         </div>
       </div>
 

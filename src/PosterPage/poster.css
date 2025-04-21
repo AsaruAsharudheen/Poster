@@ -11,22 +11,29 @@
 
 .green-heading {
   position: absolute;
-  top: 178px;
+  top: 155px;
   left: 210px;
   width: 350px;
   height: 45px;
-  font-size: 40px;
+  font-size: 25px;
   font-weight: 600; /* Replace with desired weight */
   text-align: center;
-  background: transparent;
+  /* background-color: black; */
   color: white;
   border: none;
   outline: none;
-  padding-top: 10px;
+  padding-top: 5px;
   font-family: 'Anek Malayalam', sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
   font-variation-settings: 'wdth' 100;
+}
+
+/* Style for editable content */
+.green-heading[contentEditable='true'] {
+  outline: none;
+  border: 2px solid transparent;
+  background-color: transparent;
 }
 
 .upload-box {
@@ -76,6 +83,7 @@
   left: 460px;
 }
 
+/* Styling for editable text areas (p tags) */
 .textnames,
 .textnames2 {
   display: flex;
@@ -85,36 +93,47 @@
 }
 
 .textnames {
-  top: 540px;
-  left: 169px;
+  top: 520px;
+  left: 164px;
 }
 
 .textnames2 {
-  top: 820px;
-  left: 165px;
+  top: 800px;
+  left: 160px;
 }
 
-.textnames textarea,
-.textnames2 textarea {
+.textnames p,
+.textnames2 p {
   width: 130px;
   min-height: 40px;
   font-size: 18px;
   font-weight: bold;
-  border: none;
   background-color: transparent;
   text-align: center;
   font-family: 'Noto Sans', sans-serif;
-  resize: none;
-  overflow-wrap: break-word;
-  word-break: break-word;
-  /* padding: 4px; */
+  padding: 4px;
   line-height: 1.2;
+  cursor: text;
+  word-break: break-word;
+  white-space: pre-wrap;
+  outline: none;
+  direction: ltr; /* ✅ Force left-to-right direction */
+  unicode-bidi: plaintext; /* ✅ Prevent reversed typing issue */
+}
+
+/* Style for contentEditable elements (p tags) when typing */
+.textnames p[contentEditable='true'],
+.textnames2 p[contentEditable='true'] {
+  outline: none;
+  border: 2px solid none;
+  background-color: none; /* light gray background when editing */
+  color: black; /* Ensure text is visible while editing */
 }
 
 /* Hide inputs and button when printing */
 @media print {
   input,
-  textarea,
+  p[contentEditable='true'],
   button {
     display: none;
   }
