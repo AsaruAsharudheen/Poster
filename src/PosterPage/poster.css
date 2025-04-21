@@ -1,142 +1,83 @@
-.poster {
-  max-width: 100%;
-  width: 90vw;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  margin: auto;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-  font-family: 'Dancing Script', cursive;
-  border: 2px solid #ccc;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
+/* Existing styles (your original code)... */
+/* Keep your existing styles here */
 
-/* Heading */
-.green-heading {
-  position: absolute;
-  top: 18.5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 45%;
-  height: auto;
-  font-size: 4vw;
-  font-weight: bold;
-  text-align: center;
-  background: transparent;
-  color: black;
-  border: none;
-  outline: none;
-  padding-top: 1vh;
-}
-
-/* Upload Boxes */
-.upload-box {
-  position: absolute;
-  width: 18%;
-  aspect-ratio: 1/1.1;
-  overflow: hidden;
-}
-
-.upload-box input[type='file'] {
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  position: absolute;
-}
-
-.upload-box img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Box Positions (relative % instead of fixed px) */
-.president {
-  top: 37%;
-  left: 21%;
-}
-.secretary {
-  top: 37%;
-  left: 40%;
-}
-.treasurer {
-  top: 37%;
-  left: 59%;
-}
-.chairperson {
-  top: 66%;
-  left: 21%;
-}
-.generalconvener {
-  top: 66%;
-  left: 40%;
-}
-.secondtreasurer {
-  top: 66%;
-  left: 59%;
-}
-
-/* Text name boxes */
-.textnames,
-.textnames2 {
-  display: flex;
-  justify-content: center;
-  gap: 3vw;
-  position: absolute;
-  width: 70%;
-}
-
-.textnames {
-  top: 56%;
-  left: 15%;
-}
-
-.textnames2 {
-  top: 84%;
-  left: 15%;
-}
-
-.textnames textarea,
-.textnames2 textarea {
-  width: 18vw;
-  min-height: 40px;
-  font-size: 3.5vw;
-  font-weight: bold;
-  border: none;
-  background-color: transparent;
-  text-align: center;
-  font-family: 'Noto Sans', sans-serif;
-  resize: none;
-  line-height: 1.2;
-  overflow-wrap: break-word;
-  word-break: break-word;
-}
-
-/* Hide inputs and button when printing */
-@media print {
-  input,
-  textarea,
-  button {
-    display: none;
+@media (max-width: 768px) {
+  .poster {
+    width: 90%;
+    height: auto;
+    padding-bottom: 20px;
+    font-size: 16px;
   }
-}
 
-/* Mobile-specific tweaks */
-@media (max-width: 480px) {
   .green-heading {
-    font-size: 6vw;
-    width: 70%;
+    width: 80%;
+    left: 50%;
+    top: 150px;
+    font-size: 20px;
+    transform: translateX(-50%);
+    padding-top: 10px;
+  }
+
+  .upload-box {
+    width: 100px;
+    height: 110px;
+  }
+
+  .president,
+  .secretary,
+  .treasurer,
+  .chairperson,
+  .generalconvener,
+  .secondtreasurer {
+    width: 100px;
+    height: 110px;
+  }
+
+  .president {
+    top: 300px;
+    left: 15%;
+  }
+  .secretary {
+    top: 300px;
+    left: 40%;
+  }
+  .treasurer {
+    top: 300px;
+    left: 65%;
+  }
+  .chairperson {
+    top: 500px;
+    left: 15%;
+  }
+  .generalconvener {
+    top: 500px;
+    left: 40%;
+  }
+  .secondtreasurer {
+    top: 500px;
+    left: 65%;
+  }
+
+  .textnames,
+  .textnames2 {
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 100%;
+    left: 0;
+    padding: 0 10px;
+  }
+
+  .textnames {
+    top: 430px;
+  }
+
+  .textnames2 {
+    top: 630px;
   }
 
   .textnames textarea,
   .textnames2 textarea {
-    font-size: 4vw;
-    width: 25vw;
-  }
-
-  .upload-box {
-    width: 22%;
+    width: 100px;
+    font-size: 14px;
   }
 }
