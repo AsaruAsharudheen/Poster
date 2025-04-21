@@ -77,18 +77,18 @@
 .textnames2 {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 15px;
   position: absolute;
 }
 
 .textnames {
   top: 540px;
-  left: 155px;
+  left: 160px;
 }
 
 .textnames2 {
   top: 820px;
-  left: 160px;
+  left: 165px;
 }
 
 .textnames textarea,
