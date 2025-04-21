@@ -77,7 +77,7 @@
 .textnames2 {
   display: flex;
   justify-content: center;
-  gap: 15px;
+  gap: 10px;
   position: absolute;
 }
 
