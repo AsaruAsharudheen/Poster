@@ -9,6 +9,20 @@
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
+/* Shared Editable Style */
+.editable-text {
+  direction: ltr;
+  unicode-bidi: plaintext;
+  outline: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: transparent;
+  border: none;
+  cursor: text;
+  color: black;
+}
+
+/* ✅ Green Heading */
 .green-heading {
   position: absolute;
   top: 155px;
@@ -16,12 +30,9 @@
   width: 350px;
   height: 45px;
   font-size: 25px;
-  font-weight: 600; /* Replace with desired weight */
+  font-weight: 600;
   text-align: center;
-  /* background-color: black; */
   color: white;
-  border: none;
-  outline: none;
   padding-top: 5px;
   font-family: 'Anek Malayalam', sans-serif;
   font-optical-sizing: auto;
@@ -29,13 +40,14 @@
   font-variation-settings: 'wdth' 100;
 }
 
-/* Style for editable content */
+/* ✅ Make green-heading editable without style glitches */
 .green-heading[contentEditable='true'] {
   outline: none;
-  border: 2px solid transparent;
   background-color: transparent;
+  border: none;
 }
 
+/* 🖼️ Upload Box */
 .upload-box {
   position: absolute;
   width: 145px;
@@ -57,7 +69,7 @@
   object-fit: cover;
 }
 
-/* Box positions */
+/* 🎯 Image Box Positions */
 .president {
   top: 356px;
   left: 165px;
@@ -83,7 +95,7 @@
   left: 460px;
 }
 
-/* Styling for editable text areas (p tags) */
+/* ✍️ Name Fields Container */
 .textnames,
 .textnames2 {
   display: flex;
@@ -102,35 +114,29 @@
   left: 160px;
 }
 
+/* ✍️ Individual Name Fields */
 .textnames p,
 .textnames2 p {
   width: 130px;
   min-height: 40px;
   font-size: 18px;
   font-weight: bold;
-  background-color: transparent;
   text-align: center;
   font-family: 'Noto Sans', sans-serif;
-  padding: 4px;
   line-height: 1.2;
-  cursor: text;
-  word-break: break-word;
+  color: black;
+  padding: 4px;
+  border: none;
+  background-color: transparent;
+  direction: ltr;
+  unicode-bidi: plaintext;
+  outline: none;
   white-space: pre-wrap;
-  outline: none;
-  direction: ltr; /* ✅ Force left-to-right direction */
-  unicode-bidi: plaintext; /* ✅ Prevent reversed typing issue */
+  word-break: break-word;
+  cursor: text;
 }
 
-/* Style for contentEditable elements (p tags) when typing */
-.textnames p[contentEditable='true'],
-.textnames2 p[contentEditable='true'] {
-  outline: none;
-  border: 2px solid none;
-  background-color: none; /* light gray background when editing */
-  color: black; /* Ensure text is visible while editing */
-}
-
-/* Hide inputs and button when printing */
+/* Printing mode */
 @media print {
   input,
   p[contentEditable='true'],

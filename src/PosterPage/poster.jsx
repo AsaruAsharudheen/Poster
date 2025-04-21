@@ -1,33 +1,31 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import html2canvas from 'html2canvas';
 import { Button } from 'antd';
 import jsPDF from 'jspdf';
 import './poster.css';
 
 const PosterEditor = () => {
-  const [greenHeading, setGreenHeading] = useState('');
-  const [images, setImages] = useState({});
+  const headingRef = useRef(null);
   const posterRef = useRef(null);
+  const [images, setImages] = useState({});
 
-  const handleImageChange = (e, position) => {
+  const handleImageChange = (e, role) => {
     const file = e.target.files[0];
     const reader = new FileReader();
     reader.onloadend = () => {
-      setImages(prev => ({ ...prev, [position]: reader.result }));
+      setImages(prev => ({ ...prev, [role]: reader.result }));
     };
     if (file) {
       reader.readAsDataURL(file);
     }
   };
 
-  // 📥 PDF Download Handler (Supports Mobile)
   const handleDownloadPDF = async () => {
     const canvas = await html2canvas(posterRef.current, {
       useCORS: true,
       scale: 2,
     });
     const imgData = canvas.toDataURL('image/jpeg', 1.0);
-
     const pdf = new jsPDF({
       orientation: 'portrait',
       unit: 'px',
@@ -37,7 +35,6 @@ const PosterEditor = () => {
     pdf.save('poster.pdf');
   };
 
-  // 🖼️ Save as Image Handler
   const handleSaveAsImage = async () => {
     const canvas = await html2canvas(posterRef.current, {
       useCORS: true,
@@ -58,26 +55,26 @@ const PosterEditor = () => {
     'SecondTreasurer',
   ];
 
-  const handleTextChange = (role, event) => {
-    setImages(prev => ({ ...prev, [role]: event.target.innerText }));
-  };
-
   return (
     <>
       <div
         className="poster"
         ref={posterRef}
-        style={{ backgroundImage: `url("/MSF Nellaya Copy 1 copy.png")` }}
+        style={{
+          backgroundImage: `url("/MSF Nellaya Copy 1 copy.png")`,
+        }}
       >
-        {/* Green Heading as a p tag */}
+        {/* ✅ Green Heading */}
         <p
-          className="green-heading"
+          className="green-heading editable-text"
           contentEditable
-          onInput={e => setGreenHeading(e.target.innerText)}
+          ref={headingRef}
+          suppressContentEditableWarning={true}
         >
-          {greenHeading || ''}
+          Green Heading Text
         </p>
 
+        {/* Image Upload Boxes */}
         {roles.map(role => (
           <div key={role} className={`upload-box ${role.toLowerCase()}`}>
             <input type="file" onChange={e => handleImageChange(e, role)} />
@@ -85,55 +82,36 @@ const PosterEditor = () => {
           </div>
         ))}
 
+        {/* Top Role Texts */}
         <div className="textnames">
-          <p
-            contentEditable
-            placeholder="President Name"
-            onInput={e => handleTextChange('President', e)}
-          >
-            President Name
-          </p>
-          <p
-            contentEditable
-            placeholder="Secretary Name"
-            onInput={e => handleTextChange('Secretary', e)}
-          >
-            Secretary Name
-          </p>
-          <p
-            contentEditable
-            placeholder="Treasurer Name"
-            onInput={e => handleTextChange('Treasurer', e)}
-          >
-            Treasurer Name
-          </p>
+          {['President', 'Secretary', 'Treasurer'].map(role => (
+            <p
+              key={role}
+              className="editable-text"
+              contentEditable
+              suppressContentEditableWarning={true}
+            >
+              {`${role} Name`}
+            </p>
+          ))}
         </div>
 
+        {/* Bottom Role Texts */}
         <div className="textnames2">
-          <p
-            contentEditable
-            placeholder="Chairperson Name"
-            onInput={e => handleTextChange('Chairperson', e)}
-          >
-            Chairperson Name
-          </p>
-          <p
-            contentEditable
-            placeholder="General Convener Name"
-            onInput={e => handleTextChange('GeneralConvener', e)}
-          >
-            General Convener Name
-          </p>
-          <p
-            contentEditable
-            placeholder="Second Treasurer Name"
-            onInput={e => handleTextChange('SecondTreasurer', e)}
-          >
-            Second Treasurer Name
-          </p>
+          {['Chairperson', 'GeneralConvener', 'SecondTreasurer'].map(role => (
+            <p
+              key={role}
+              className="editable-text"
+              contentEditable
+              suppressContentEditableWarning={true}
+            >
+              {`${role} Name`}
+            </p>
+          ))}
         </div>
       </div>
 
+      {/* Buttons */}
       <div
         style={{
           marginTop: '20px',
@@ -142,14 +120,8 @@ const PosterEditor = () => {
           justifyContent: 'center',
         }}
       >
-        <Button onClick={handleDownloadPDF} className="download-btn">
-          Download PDF
-        </Button>
-        <Button
-          onClick={handleSaveAsImage}
-          className="download-btn"
-          type="primary"
-        >
+        <Button onClick={handleDownloadPDF}>Download PDF</Button>
+        <Button type="primary" onClick={handleSaveAsImage}>
           Save as Image
         </Button>
       </div>
